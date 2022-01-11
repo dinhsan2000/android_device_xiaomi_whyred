@@ -26,13 +26,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 $(call inherit-product, device/xiaomi/whyred/device.mk)
 
 # Inherit from custom vendor
-$(call inherit-product-if-exist, vendor/MiuiCamera/config.mk)
+#$(call inherit-product-if-exist, vendor/MiuiCamera/config.mk)
 
 # Inherit some common aosp stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/cherish/config/common_full_phone.mk)
+
+CHERISH_BUILD_TYPE := OFFICIAL
+WITH_GMS := true
+
+PRODUCT_GENERIC_PROPERTIES += \
+    ro.cherish.maintainer=DinhSan
 
 # Device identifier
-PRODUCT_NAME := aosp_whyred
+PRODUCT_NAME := cherish_whyred
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := whyred
 PRODUCT_MANUFACTURER := Xiaomi
@@ -52,7 +58,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 TARGET_VENDOR := Xiaomi
 IS_PHONE := true
-CUSTOM_BUILD_TYPE := OFFICIAL
 TARGET_SUPPORTS_GOOGLE_RECORDER := false
 TARGET_INCLUDE_STOCK_ACORE := false
 TARGET_INCLUDE_LIVE_WALLPAPERS := false
